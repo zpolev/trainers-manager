@@ -11,8 +11,8 @@ type Training struct {
 	ID        uuid.UUID
 	Type      string
 	Skills    []string
-	Plan      TrainingPlan
-	Structure TrainingStructure
+	Plan      *TrainingPlan
+	Structure *TrainingStructure
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }
