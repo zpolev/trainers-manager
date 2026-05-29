@@ -11,6 +11,7 @@ type Config struct {
 	Env         string        `yaml:"env" env-default:"local"`
 	StoragePath string        `yaml:"storage_path" env-required:"true"`
 	PG          PGConfig      `yaml:"postgre" env-required:"true"`
+	Server      ServerConfig  `yaml:"server" env-required:"true"`
 	Logging     LoggingConfig `yaml:"logging_handler"`
 }
 
@@ -23,8 +24,19 @@ type LoggingConfig struct {
 type PGConfig struct {
 	PORT     int    `yaml:"port"`
 	NAME     string `yaml:"name"`
+	USER     string `yaml:"user"`
+	SSL      string `yaml:"ssl"`
 	HOST     string `yaml:"host"`
 	PASSWORD string `yaml:"password"`
+}
+
+type ServerConfig struct {
+	PORT            int    `yaml:"port"`
+	HOST            string `yaml:"host"`
+	ReadTimeout     int    `yaml:"read_timeout"`
+	WriteTimeout    int    `yaml:"write_timeout"`
+	ShutdownTimeout int    `yaml:"shutdown_timeout"`
+	Prefork         bool   `yaml:"prefork"`
 }
 
 func MustLoad() *Config {
