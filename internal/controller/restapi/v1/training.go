@@ -17,14 +17,14 @@ import (
 // @Success     200 {object} entity.TrainingPlanHistory
 // @Failure     500 {object} response.Error
 // @Router      /training/history [get]
-func (r *V1) History(ctx *fiber.Ctx) error {
-	trainingHistory, err := r.t.History(ctx.UserContext())
-	if err != nil {
-		r.l.Error(err, "restapi - v1 - history")
-		return errorResponse(ctx, http.StatusInternalServerError, "Failed to get training history")
-	}
-	return ctx.Status(http.StatusOK).JSON(trainingHistory)
-}
+// func (r *V1) History(ctx *fiber.Ctx) error {
+// 	trainingHistory, err := r.t.History(ctx.UserContext())
+// 	if err != nil {
+// 		r.l.Error(err, "restapi - v1 - history")
+// 		return errorResponse(ctx, http.StatusInternalServerError, "Failed to get training history")
+// 	}
+// 	return ctx.Status(http.StatusOK).JSON(trainingHistory)
+// }
 
 // @Summary     Create structure
 // @Description Create training structure
@@ -48,7 +48,7 @@ func (r *V1) Structure(ctx *fiber.Ctx) error {
 		return errorResponse(ctx, http.StatusBadRequest, "Invalid request body")
 	}
 
-	if err := r.t.Structure(
+	if err := r.t.StoreStructure(
 		ctx.UserContext(),
 		entity.TrainingStructure{
 			Structure: req.Structure,

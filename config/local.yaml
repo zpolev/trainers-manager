@@ -8,7 +8,7 @@ postgre:
   host: localhost
   ssl: disable
 server:
-  port: 3033
+  port: 9045
   host: localhost
   read_timeout: 5
   write_timeout: 5

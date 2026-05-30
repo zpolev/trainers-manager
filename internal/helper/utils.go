@@ -12,6 +12,6 @@ func GetDBDsn(cfg *config.Config) string {
 }
 
 func GetServerAddr(cfg *config.Config) string {
-	addr := fmt.Sprintf("%s:%s", cfg.Server.HOST, cfg.Server.PORT)
+	addr := fmt.Sprintf("%s:%d", cfg.Server.HOST, cfg.Server.PORT)
 	return addr
 }
